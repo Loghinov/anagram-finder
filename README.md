@@ -1,35 +1,31 @@
-                                         # Anagram Finder
+                                            Anagram Finder
+This is a small Java project that reads a text file containing words and groups the anagrams.
 
-Acesta e un mic proiect Java care citește un fișier text cu cuvinte și grupează anagramele.
-
-# Tech stack folosit
-- java 21
-- Maven
-- Spring Boot(optional pentru structura si extindere)
+# Tech stack used
+- Java 21 
+- Maven 
 - Git
 
-# Inainte de a porni aplicatia ne asiguram ca:
+# Before starting the application, make sure that:
+- JDK 21 is installed. 
+- Maven is installed. 
+- The project is cloned locally using git clone.
 
-- Avem jdk 21 .
-- Avem maven instalat.
-- Proiectul clonat local cu `git clone`
+# Compiling the project
+- Directly from the IDE 
+- On the right side panel, find the Maven tab 
+- Select the project, in our case "anagram-finder"
+- Open the LifeCycle section 
+- Select Install.
 
-# Compilarea proiectului
+# From the terminal (bash)
+-Run the command in the terminal: mvn clean install.
 
-1. Direct din aplicatie
-- In partea dreapta lateral avem o bara unde gasim Maven
-- Selectam proiectul, in cazul nostru "anagram-finder"
-- Deschidem LifeCycle
-- Selectam Install.
+# How to run the application!
+- Go to Run -> Edit -> Program arguments -> Add the path to your file, for example "sample.txt" -> Click OK. 
+- Press Run to start the application. 
 
-2. Din terminal (bash)
-- Introducem comanda in terminal (mvn clean install).
-
-# Cum pornim aplicatia!
-- Run -> Edit-> Program arguments -> Adaugam calea catre fisierul nostru " sample.txt" -> Apasam OK.
-- Apasam Run la aplicatie.
-
-# Fisierul de input va contine :
+# The input file will contain:
 act
 cat
 tree
@@ -38,13 +34,11 @@ care
 acre
 bee
 
-# Output va fi:
+The output will be:
 [act, cat]
 [tree]
 [race, care, acre]
 [bee]
 
-# Decizii privind proiectarea
- - Pentru aceasta informatie accesati  DESIGN.md
-
-
+# Design decisions
+- For this information, please refer to DESIGN.md

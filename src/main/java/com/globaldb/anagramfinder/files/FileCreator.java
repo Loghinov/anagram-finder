@@ -1,4 +1,4 @@
-package files;
+package com.globaldb.anagramfinder.files;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

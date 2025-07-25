@@ -1,43 +1,41 @@
 
-# Arhitectura generala
+# General Architecture
 
- Avand o experienta in proiecte cu arhitectura MVC, am decis la fel sa o implementez si aici pentru ca 
- ofera claritate si permite o extindere usoara a aplicatiei. Cred ca trebuie sa dau si o explicatie de
- ce am folosit Spring Boot aici, pentru ca inteleg proiectul este unul simplu si nu are nevoie de acest 
- Framework, dar totusi tinand cont ca este vorba de o extindere a proiectului el este necesar. Acest
- framework contine multimple biblioteci si tooluri pentru RestAPi, Hibernate. Anume in acest proiect el
-se foloseste doar pentru organizarea codului, ne ofera perspectiva de a transforma rapid aplicatia 
- intr-un serviciu web, este o baza buna pentru scalare
+Having experience with projects featuring modular architecture and based on the MVC principles,
+I decided to apply a similar approach in this project as well. Although the project is relatively simple,
+I focused on clarity, separation of concerns, and extensibility.
+The application is written in Java 21, using Maven for dependency management and build organization.
 
-    Structura:
-- AnagramFinderApplication - punct de pornire  al aplicatiei.
-- In pachetul service am creat clasa AnagramImplementation, care se ocupă de logica principală: procesarea 
-  anagramelor.
-- In pachetul files, clasa FileCreator este responsabilă de crearea fișierului de input.
-- Fișierul sample.txt a fost generat cu ajutorul metodei createFile() din FileCreator.
+    Structure:
+- AnagramFinderApplication - the application entry point.
+- In the package com.globaldb.anagramfinder.service, I created the class AnagramImplementation, 
+  which handles the main logic: processing the anagrams.
+- In the package com.globaldb.anagramfinder.files, the class FileCreator is responsible for creating 
+  the input file.
+- The file sample.txt was generated using the createFile() method from FileCreator.
+
+So, the structure is modular, meaning each class has a well-defined role, thus respecting 
+the SOLID principles. I used a LinkedHashMap to preserve insertion order.
+
+# Answers to questions:
+
+1.      How will it work with 10 million words?
  
-Deci structura este modulara, adica fiecare clasa are un rol bine definit si astfel se respecta principiile 
-"SOLID". Am folosit  LinkedHashMap pentru a pastra ordinea inserarii.
+- Grouping anagrams is done via a HashMap<String, List<String>> where the key is the alphabetically sorted word.
+  This implementation guarantees fast functionality up to several tens of millions of words in memory, obviously 
+  if we have 8-16 GB of RAM.
 
-# Raspunsul la intrebari:
+2.      How will it work with 100 million words?
 
-1.      Cum va functiona cu 10 milioane de cuvinte?
- 
-- Gruparea anagramelor se face prin "HashMap<String, List<String>>" in care cheia este cuvantul sortat
-  alfabetic. Aceasta implimentare ne garanteaza o functionalitate rapida pana la cateva zeci de milioane de 
-  cuvinte in memorie evident daca daca avem RAM de 8-16 GB.
+- First of all, working with such an amount of words only in memory is not possible.
+- We will need to store the data in a database.
+- Processing in batches.
+- Parallel processing (multithreading).
 
-2.      Cum va functiona cu 100 milioane de cuvinte?
-
-- In primul rand cu asa cantitate de cuvinte doar in memorie nu este posibila functioarea.
-- Vom avea nevoie de a stoca datele intr-o baza de date.
-- Procesare pe blocuri.
-- Procesare paralelă (multithreading).
-
-# Concluzie
-- Am ales o structură modulară, ușor de întreținut.
-- Deși proiectul este simplu, am aplicat bune practici care pot fi extinse ușor în contexte mai complexe.
-- Am răspuns cerințelor de scalabilitate și am justificat deciziile luate în proiect.
+# Conclusion
+- I chose a modular structure, easy to maintain.
+- Although the project is simple, I applied good practices that can be easily extended in more complex contexts.
+- I addressed scalability requirements and justified the decisions made in the project.
 
 
  
